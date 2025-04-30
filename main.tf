@@ -36,6 +36,7 @@ resource "random_id" "id" {
 resource "aws_kms_key" "kms" {
   description = "KMS key for ${local.queue_name}"
   count       = var.encrypt_sqs_kms ? 1 : 0
+  tags = local.default_tags
 
   policy = jsonencode({
     Version = "2012-10-17"
